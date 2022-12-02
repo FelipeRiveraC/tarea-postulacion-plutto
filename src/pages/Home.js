@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-
-
 function Home() {
 
   const [rut, setRut] = useState('');
@@ -24,7 +22,7 @@ function Home() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
       }})
-      
+    
     .then((res) => {
       if (res.data.is_valid) {
         setValid(true);
@@ -42,7 +40,7 @@ function Home() {
     setRut(e.target.value)
    
   }
-
+  
   const handleDocnum = (e) => {
     setDocnum(e.target.value)
   }
