@@ -9,12 +9,13 @@ function Home() {
   const [validrut, setValidrut] = useState(false);
   const [invalid, setInvalid] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  
+  // RegEx para validar RUT
   const pattern_rut = /^[0-9]+-[0-9kK]{1}$/;
 
-
-  const url = "https://kyb.getplutto.com/api/v1/utilities/chile/chilean_id_serial_validation";
-  const token = "sk_d218921786a324deddc9eacc4d6637ff7172c494d7d3ccd4"
+  // Extraemos la API_URL y la API_KEY de las variables de entorno
+  const url = process.env.REACT_APP_API_URL;
+  const token = process.env.REACT_APP_API_TOKEN;
 
   const handleSubmit = async (e) => {
 
@@ -45,8 +46,6 @@ function Home() {
       setValidrut(true);
     }
     setRut(e.target.value);
-
-
   }
 
   const handleDocnum = (e) => {
