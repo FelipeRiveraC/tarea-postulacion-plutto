@@ -12,7 +12,7 @@ import {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <div className='ml-[max(10vw,140px)] mt-24 mr-[max(6vw,12px)]'>
+  <div className='ml-[max(5vw,20px)] mt-24 mr-[max(5vw,12px)]'>
     <Routes>
       <Route path="/" element={<Home />} />
     </Routes>
