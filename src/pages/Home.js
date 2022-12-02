@@ -9,6 +9,7 @@ function Home() {
   const [validrut, setValidrut] = useState(false);
   const [invalid, setInvalid] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   
   // RegEx para validar RUT
   const pattern_rut = /^[0-9]+-[0-9kK]{1}$/;
@@ -39,11 +40,18 @@ function Home() {
         setLoading(false);
       }
     })
+    .catch((err) => {
+      setError(true);
+      setLoading(false);
+    })
+
   }
 
   const handleRut = (e) => {
     if (pattern_rut.test(e.target.value)) {
       setValidrut(true);
+    } else {
+      setValidrut(false);
     }
     setRut(e.target.value);
   }
@@ -82,6 +90,13 @@ function Home() {
               </div>
 
                   }
+          {error &&
+                <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                <span className="font-medium">Ha ocurrido un error!</span> Intentelo denuevo mas tarde
+              </div>
+
+                  }
+
 
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -99,7 +114,8 @@ function Home() {
                     </div>
                     <div className="flex items-center justify-between">
                     </div>
-                    <button type="submit" disabled={!validrut} onClick={handleSubmit} className="w-full bg-slate-700 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Enviar</button>
+                    
+                    <button type="submit" disabled={!validrut} onClick={handleSubmit} className="w-full bg-slate-700 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">{validrut ? (<>Enviar</>) : (<>Ingresa un rut valido</>)}</button>
                   </form>
                 </div>
               </div>
