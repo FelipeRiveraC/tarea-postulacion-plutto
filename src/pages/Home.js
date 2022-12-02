@@ -16,7 +16,7 @@ function Home() {
 
   // Extraemos la API_URL y la API_KEY de las variables de entorno
   const url = process.env.REACT_APP_API_URL;
-  const token = process.env.REACT_APP_API_TOKEN;
+  const token = process.env.REACT_APP_API_KEY;
 
   const handleSubmit = async (e) => {
 
