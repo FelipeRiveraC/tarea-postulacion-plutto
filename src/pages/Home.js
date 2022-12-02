@@ -33,12 +33,12 @@ function Home() {
       if (res.data.is_valid) {
         setValid(true);
         setInvalid(false);
-        setLoading(false);
       } else {
         setInvalid(true);
         setValid(false);
-        setLoading(false);
       }
+      setError(false);
+      setLoading(false)
     })
     .catch((err) => {
       setError(true);
